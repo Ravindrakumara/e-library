@@ -70,7 +70,7 @@ REST_FRAMEWORK = {
 CORS_ORIGIN_WHITELIST = [
     "http://127.0.0.1:3000"
 ]
-
+default_dburl = 'sqlite///' + os.path.join(BASE_DIR)
 
 DATABASES = {
     'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
@@ -127,4 +127,4 @@ STATICFILES_DIRS = (
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 SITE_ID = 1
-LOGIN_REDIRECT_URL = '/'
+
