@@ -27,6 +27,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -34,7 +35,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+
 ]
 
 ROOT_URLCONF = 'bookshop.urls'
@@ -62,8 +63,6 @@ REST_FRAMEWORK = {
         'rest_framework.permission.IsAuthenticated',
         'rest_framework.pagination.LimitOffsetPagination',
     }
-    #'DEFAULT_FILTER_BACKENDS':['django_filters.rest_framework.DjangoFilterBackend']
-
 
 }
 

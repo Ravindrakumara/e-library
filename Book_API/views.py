@@ -2,7 +2,6 @@ from django.shortcuts import render
 from rest_framework import viewsets,status
 from rest_framework.generics import ListAPIView
 from .models import Books, User, Carousel,Category
-#RegiSerializer' OrderSerializer,
 from .serializers import BookSerializer, UserSerializer, CarouselSerializer
 from rest_framework.filters import SearchFilter, OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
