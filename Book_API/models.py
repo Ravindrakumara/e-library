@@ -79,7 +79,7 @@ class Carousel(models.Model):
 
 
     headline = models.CharField(max_length=65)
-    banner = models.ImageField(upload_to='web_banner',storage=storage=DROPBOX_STORAGE, null=True, blank=True)
+    banner = models.ImageField(upload_to='web_banner',storage=DROPBOX_STORAGE, null=True, blank=True)
     create_date = models.DateTimeField(auto_now_add=True)
 
     #class Meta:
