@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 from django_dropbox_storage.storage import DropboxStorage
 
 DROPBOX_STORAGE = DropboxStorage()

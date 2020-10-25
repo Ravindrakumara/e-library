@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'django_dropbox_storage',
+
 ]
 
 MIDDLEWARE = [
@@ -132,6 +133,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 FILE_UPLOAD_HANDLERS = (
     "testapp.dropbox_upload_handler.DropboxFileUploadHandler",
 )
