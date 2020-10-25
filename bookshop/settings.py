@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'Book_API',
     'corsheaders',
     'rest_framework',
+    'django_dropbox_storage',
 ]
 
 MIDDLEWARE = [
@@ -76,6 +77,13 @@ DATABASES = {
 
 }
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#dropbox
+DEFAULT_FILE_STORAGE = 'django_dropbox_storage.storage.DropboxStorage'
+DROPBOX_OAUTH2_TOKEN = 'sl.AkRoS5J0OV2rfAY8_xPjp38FsZ4FaOtblK7NqyY6axCVVebzPsaefZ3CtlVY_k3FggVdpDfx5FAQ_eYtCuEcqw1w_A1nr-SVrjTOGncPBRsi-hno5m2QyhbLcMelzuBQTKyhj5U'
+DROPBOX_ROOT_PATH = "media"
+DROPBOX_APP_KEY = "vj9x570rybse6j2"
+DROPBOX_APP_SECRET_KEY = "k95jdiq3z3xkxkv"
+
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -124,6 +132,9 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+FILE_UPLOAD_HANDLERS = (
+    "testapp.dropbox_upload_handler.DropboxFileUploadHandler",
+)
 
 SITE_ID = 1
 

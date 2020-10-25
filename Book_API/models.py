@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django_dropbox.storage import DropboxStorage
+
+STORAGE = DropboxStorage()
 # Create your models here.
 
 def upload_path(instance, filname):
@@ -29,9 +32,8 @@ class Books (models.Model):
     pages = models.CharField(max_length=50)
     note = models.CharField(max_length=65)
     edition = models.CharField(max_length=50)
-    image = models.ImageField(upload_to='book_cover')
+    image = models.ImageField(upload_to='book_cover',storage=STORAGE, null=True, blank=True)
     create_date = models.DateTimeField(auto_now_add=True)
-
     class Meta:
         verbose_name_plural = "Books"
 
@@ -75,13 +77,13 @@ class Sales (models.Model):
 
 class Carousel(models.Model):
 
-    
+
     headline = models.CharField(max_length=65)
-    banner = models.ImageField(upload_to='web_banner')
+    banner = models.ImageField(upload_to='web_banner',storage=STORAGE, null=True, blank=True)
     create_date = models.DateTimeField(auto_now_add=True)
 
     #class Meta:
         #verbose_name_plural = "Carousel"
-    
+
     #def __str__(self):
         #return self.headline
