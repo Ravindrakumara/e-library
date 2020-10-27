@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG')
-ALLOWED_HOSTS = ['djangotestapifor.herokuapp.com']
+ALLOWED_HOSTS = ['']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -29,7 +29,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -37,6 +36,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
 
 ]
 
@@ -80,10 +80,10 @@ DATABASES = {
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 #dropbox
 DEFAULT_FILE_STORAGE = 'django_dropbox_storage.storage.DropboxStorage'
-DROPBOX_OAUTH2_TOKEN = 'sl.AkRoS5J0OV2rfAY8_xPjp38FsZ4FaOtblK7NqyY6axCVVebzPsaefZ3CtlVY_k3FggVdpDfx5FAQ_eYtCuEcqw1w_A1nr-SVrjTOGncPBRsi-hno5m2QyhbLcMelzuBQTKyhj5U'
+DROPBOX_OAUTH2_TOKEN = config('DROPBOX_OAUTH2_TOKEN')
 DROPBOX_ROOT_PATH = "media"
-DROPBOX_APP_KEY = "vj9x570rybse6j2"
-DROPBOX_APP_SECRET_KEY = "k95jdiq3z3xkxkv"
+DROPBOX_APP_KEY = config('DROPBOX_APP_KEY')
+DROPBOX_APP_SECRET_KEY = config('DROPBOX_APP_SECRET_KEY')
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
