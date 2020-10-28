@@ -79,7 +79,7 @@ DATABASES = {
 }
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 #dropbox
-DEFAULT_FILE_STORAGE = 'django_dropbox_storage.storage.DropboxStorage'
+DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
 DROPBOX_OAUTH2_TOKEN = config('DROPBOX_OAUTH2_TOKEN')
 DROPBOX_ROOT_PATH = "media"
 DROPBOX_ROOT_FOLDER = '/media'
