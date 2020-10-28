@@ -135,9 +135,9 @@ STATICFILES_DIRS = (
 )
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-FILE_UPLOAD_HANDLERS = (
-    "bookshop.dropbox_upload_handler.DropboxFileUploadHandler",
-)
+#FILE_UPLOAD_HANDLERS = (
+   # "bookshop.dropbox_upload_handler.DropboxFileUploadHandler",
+#)
 
 SITE_ID = 1
 
