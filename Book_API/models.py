@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django_dropbox_storage.storage import DropboxStorage
+
+DROPBOX_STORAGE = DropboxStorage()
 
 # Create your models here.
 
@@ -30,7 +33,7 @@ class Books (models.Model):
     pages = models.CharField(max_length=50)
     note = models.CharField(max_length=65)
     edition = models.CharField(max_length=50)
-    image = models.ImageField(upload_to='book_cover')
+    image = models.ImageField(upload_to='book_cover', storage=DROPBOX_STORAGE)
     create_date = models.DateTimeField(auto_now_add=True)
     class Meta:
         verbose_name_plural = "Books"
