@@ -86,7 +86,7 @@ DROPBOX_OAUTH2_TOKEN = config('DROPBOX_OAUTH2_TOKEN')
 DROPBOX_ROOT_PATH = "/media"
 DROPBOX_ROOT_FOLDER = '/media'
 DROPBOX_APP_KEY = config('DROPBOX_APP_KEY')
-DROPBOX_APP_SECRET_KEY = config('DROPBOX_APP_SECRET_KEY')
+DROPBOX_APP_SECRET_KEY = "k95jdiq3z3xkxkv"
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
