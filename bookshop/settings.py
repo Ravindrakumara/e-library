@@ -10,7 +10,7 @@ from storages.backends import dropbox
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = "hghghghghghg"
 DEBUG = config('DEBUG')
 ALLOWED_HOSTS = ['']
 
