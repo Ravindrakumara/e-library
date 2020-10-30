@@ -82,10 +82,10 @@ DATABASES = {
 #dropbox
 #DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
 DEFAULT_FILE_STORAGE = 'django_dropbox_storage.storage.DropboxStorage'
-DROPBOX_OAUTH2_TOKEN = config('DROPBOX_OAUTH2_TOKEN')
+DROPBOX_OAUTH2_TOKEN = "sl.AkRoS5J0OV2rfAY8_xPjp38FsZ4FaOtblK7NqyY6axCVVebzPsaefZ3CtlVY_k3FggVdpDfx5FAQ_eYtCuEcqw1w_A1nr-SVrjTOGncPBRsi-hno5m2QyhbLcMelzuBQTKyhj5U"
 DROPBOX_ROOT_PATH = "/media"
 DROPBOX_ROOT_FOLDER = '/media'
-DROPBOX_APP_KEY = config('DROPBOX_APP_KEY')
+DROPBOX_APP_KEY = "vj9x570rybse6j2"
 DROPBOX_APP_SECRET_KEY = "k95jdiq3z3xkxkv"
 
 # Password validation
