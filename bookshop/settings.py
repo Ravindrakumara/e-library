@@ -5,7 +5,7 @@ from pathlib import Path
 from dj_database_url import parse as dburl
 import django_heroku
 import environ
-from storages.backends import dropbox
+
 
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'django_dropbox_storage',
+    'storages',
 
 ]
 
@@ -81,12 +82,7 @@ DATABASES = {
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 #dropbox
 #DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
-DEFAULT_FILE_STORAGE = 'django_dropbox_storage.storage.DropboxStorage'
-DROPBOX_OAUTH2_TOKEN = "sl.AkRoS5J0OV2rfAY8_xPjp38FsZ4FaOtblK7NqyY6axCVVebzPsaefZ3CtlVY_k3FggVdpDfx5FAQ_eYtCuEcqw1w_A1nr-SVrjTOGncPBRsi-hno5m2QyhbLcMelzuBQTKyhj5U"
-DROPBOX_ROOT_PATH = "/media"
-DROPBOX_ROOT_FOLDER = '/media'
-DROPBOX_APP_KEY = "vj9x570rybse6j2"
-DROPBOX_APP_SECRET_KEY = "k95jdiq3z3xkxkv"
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -124,6 +120,25 @@ django_heroku.settings(locals())
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_ACCESS_KEY_ID = 'AKIARCFQGFWZBWHR5XRK'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'ebookbucket'
+AWS_DEFAULT_ACL = None
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+#AWS_LOCATION = 'static'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#---------------------------
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -135,11 +150,6 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-#FILE_UPLOAD_HANDLERS = (
-   # "bookshop.dropbox_upload_handler.DropboxFileUploadHandler",
-#)
 
 SITE_ID = 1
 
