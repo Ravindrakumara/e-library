@@ -1,13 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django_dropbox_storage.storage import DropboxStorage
-
-DROPBOX_STORAGE = DropboxStorage()
-
-# Create your models here.
-
-def upload_path(instance, filname):
-    return '/'.join(['book_cover', str(instance.book), filname])
 
 Language =(
     ("Tamil", "Tamil"),
