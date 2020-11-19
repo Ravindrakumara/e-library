@@ -25,7 +25,7 @@ class Books (models.Model):
     pages = models.CharField(max_length=50)
     note = models.CharField(max_length=65)
     edition = models.CharField(max_length=50)
-    image = models.ImageField(upload_to='book_cover', storage=DROPBOX_STORAGE)
+    image = models.ImageField(upload_to='book_cover')
     create_date = models.DateTimeField(auto_now_add=True)
     class Meta:
         verbose_name_plural = "Books"

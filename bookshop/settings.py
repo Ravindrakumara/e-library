@@ -24,7 +24,6 @@ INSTALLED_APPS = [
     'Book_API',
     'corsheaders',
     'rest_framework',
-    'django_dropbox_storage',
     'storages',
 
 ]
