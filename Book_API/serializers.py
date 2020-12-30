@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Books, User, Carousel
+from .models import Books, User, Carousel,Expenses,Sales
 from rest_framework.authtoken.models import Token
 
 class UserSerializer(serializers.ModelSerializer):
@@ -29,6 +29,19 @@ class CarouselSerializer(serializers.ModelSerializer):
         fields = ('headline', 'banner')
         read_only_fields = ['banner']
 
+# This serializer added to 30-12-2020
+
+class ExpenseSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Expenses
+        fields = ("id","book","transport","transport_cost","purchase_price","exchange_rates","sale_price","total_book_cost","quantity","date","create_date")
+    pass
+
+class SalesSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Sales
+        fields = ("id","book","sale_price","quantity","total","stock")
+    pass
 #class Search_dataSerializer(serializers.ModelSerializer):
 
 #pass

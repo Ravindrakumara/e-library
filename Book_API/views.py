@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework import viewsets,status
 from rest_framework.generics import ListAPIView
-from .models import Books, User, Carousel,Category
-from .serializers import BookSerializer, UserSerializer, CarouselSerializer
+from .models import Books, User, Carousel,Category,Sales,Expense
+from .serializers import BookSerializer, UserSerializer, CarouselSerializer,ExpenseSerializers,SalesSerializers
 from rest_framework.filters import SearchFilter, OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
@@ -31,4 +31,15 @@ class BookList(generics.ListAPIView):
     filter_backends = [filters.SearchFilter]
     search_fields = ['isbn','book','language','publisher','edition']  # this for search any book , 'book', 'language', 'category','publisher', 'edition'
 
+#========= 2020-12-30 =============
+
+class ExpenseViewSet(viewsets.ModelViewSet):
+    queryset = Expenses.objects.all()
+    serializer_class = ExpenseSerializers
+    pass
+
+class SalesViewSet(viewsets.ModelViewSet):
+    queryset = Sales.objects.all()
+    serializer_class = SalesSerializers
+    pass
 
