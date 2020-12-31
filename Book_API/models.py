@@ -31,7 +31,7 @@ class Books (models.Model):
         verbose_name_plural = "Books"
 
 class Expenses (models.Model):
-    book = models.ForeignKey(Books, on_delete=models.CASCADE)
+    book = models.CharField(max_length=65,choices=Language)
     transport = models.CharField(max_length=65)
     transport_cost = models.DecimalField(max_digits=6, decimal_places=2, null=True)
     purchase_price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
@@ -52,7 +52,7 @@ class Expenses (models.Model):
         verbose_name_plural = "Expenses"
 
 class Sales (models.Model):
-    book = models.ForeignKey(Books, on_delete=models.CASCADE)
+    book = models.CharField(max_length=65,choices=Language)
     sale_price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
     quantity = models.IntegerField(default=0)
     total = models.IntegerField(default=0)

@@ -11,7 +11,7 @@ import environ
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
-SECRET_KEY = "hghghghghghg"
+SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG')
 ALLOWED_HOSTS = ['']
 
@@ -69,23 +69,26 @@ REST_FRAMEWORK = {
     }
 
 }
-
+# here allow front-end ip range
 CORS_ORIGIN_WHITELIST = [
     "http://127.0.0.1:3000"
 ]
+
 default_dburl = 'sqlite///' + os.path.join(BASE_DIR)
 
 DATABASES = {
     'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
-
 }
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-#dropbox
-#DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
 
-
-# Password validation
-# https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'book',
+#         'USER': 'postgres',
+#         'PASSWORD': '2025',
+#         'HOST': 'localhost'
+#     }
+# }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -123,9 +126,9 @@ django_heroku.settings(locals())
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-AWS_ACCESS_KEY_ID = 'AKIARCFQGFWZBWHR5XRK'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'ebookbucket'
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
 AWS_DEFAULT_ACL = None
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets,status
 from rest_framework.generics import ListAPIView
-from .models import Books, User, Carousel,Category,Sales,Expense
+from .models import Books, User, Carousel,Category,Sales,Expenses
 from .serializers import BookSerializer, UserSerializer, CarouselSerializer,ExpenseSerializers,SalesSerializers
 from rest_framework.filters import SearchFilter, OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
