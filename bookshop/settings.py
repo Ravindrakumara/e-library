@@ -75,20 +75,20 @@ CORS_ORIGIN_WHITELIST = [
 ]
 
 default_dburl = 'sqlite///' + os.path.join(BASE_DIR)
-#
-# DATABASES = {
-#     'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
-# }
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'book',
-        'USER': 'postgres',
-        'PASSWORD': '2025',
-        'HOST': 'localhost'
-    }
+    'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'book',
+#         'USER': 'postgres',
+#         'PASSWORD': '2025',
+#         'HOST': 'localhost'
+#     }
+# }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
