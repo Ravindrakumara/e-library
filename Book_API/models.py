@@ -17,7 +17,7 @@ class Category(models.Model):
 class Books (models.Model):
     isbn = models.CharField(max_length=20)
     book = models.CharField(max_length=65)
-    language = models.CharField(max_length=10,choices=Language)
+    language = models.CharField(max_length=10)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     description = models.TextField(max_length=250)
     publisher = models.CharField(max_length=50)
@@ -31,7 +31,7 @@ class Books (models.Model):
         verbose_name_plural = "Books"
 
 class Expenses (models.Model):
-    book = models.CharField(max_length=65,choices=Language)
+    book = models.CharField(max_length=65)
     transport = models.CharField(max_length=65)
     transport_cost = models.DecimalField(max_digits=6, decimal_places=2, null=True)
     purchase_price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
@@ -52,7 +52,7 @@ class Expenses (models.Model):
         verbose_name_plural = "Expenses"
 
 class Sales (models.Model):
-    book = models.CharField(max_length=65,choices=Language)
+    book = models.CharField(max_length=65)
     sale_price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
     quantity = models.IntegerField(default=0)
     total = models.IntegerField(default=0)
