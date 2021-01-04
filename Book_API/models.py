@@ -18,7 +18,7 @@ class Books (models.Model):
     isbn = models.CharField(max_length=20)
     book = models.CharField(max_length=65)
     language = models.CharField(max_length=10)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.CharField(max_length=50)
     description = models.TextField(max_length=250)
     publisher = models.CharField(max_length=50)
     pub_date = models.DateField()

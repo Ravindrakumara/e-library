@@ -79,7 +79,7 @@ default_dburl = 'sqlite///' + os.path.join(BASE_DIR)
 DATABASES = {
     'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
 }
-
+#
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
