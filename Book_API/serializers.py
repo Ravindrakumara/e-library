@@ -18,7 +18,7 @@ class BookSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Books
-        fields = ('id','isbn','book','language','category','description','publisher','pub_date','pages','note','edition','image','create_date')
+        fields = '__all__'
         read_only_fields = ['image']
 
 
@@ -34,13 +34,13 @@ class CarouselSerializer(serializers.ModelSerializer):
 class ExpenseSerializers(serializers.ModelSerializer):
     class Meta:
         model = Expenses
-        fields = ("id","book","transport","transport_cost","purchase_price","exchange_rates","sale_price","total_book_cost","quantity","date","create_date")
+        fields = '__all__'
     pass
 
 class SalesSerializers(serializers.ModelSerializer):
     class Meta:
         model = Sales
-        fields = ("id","book","sale_price","quantity","total","stock")
+        fields = '__all__'
     pass
 #class Search_dataSerializer(serializers.ModelSerializer):
 

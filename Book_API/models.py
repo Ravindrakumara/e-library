@@ -10,13 +10,14 @@ Language =(
 
 class Category(models.Model):
     title = models.CharField(max_length=65)
+    create_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name_plural = "Category"
 
 class Books (models.Model):
-    isbn = models.CharField(max_length=20)
-    book = models.CharField(max_length=65)
+    isbn = models.CharField(max_length=20,unique=True)
+    book = models.CharField(max_length=65,unique=True)
     language = models.CharField(max_length=10)
     category = models.CharField(max_length=50)
     description = models.TextField(max_length=250)
@@ -57,6 +58,7 @@ class Sales (models.Model):
     quantity = models.IntegerField(default=0)
     total = models.IntegerField(default=0)
     stock = models.IntegerField(default=0)
+    create_date = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
         self.total = self.sale_price * self.quantity
@@ -69,8 +71,6 @@ class Sales (models.Model):
 
 
 class Carousel(models.Model):
-
-
     headline = models.CharField(max_length=65)
     banner = models.ImageField(upload_to='web_banner')
     create_date = models.DateTimeField(auto_now_add=True)

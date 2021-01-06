@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'storages',
+    'knox',
 
 ]
 
@@ -38,7 +39,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
 
 ]
 
@@ -62,12 +63,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'bookshop.wsgi.application'
 
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASS': {
+#         'rest_framework.permission.IsAuthenticated',
+#         'rest_framework.pagination.LimitOffsetPagination',
+#         'rest_framework.permissions.AllowAny',
+#     }
+#
+# }
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASS': {
-        'rest_framework.permission.IsAuthenticated',
-        'rest_framework.pagination.LimitOffsetPagination',
-    }
-
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
 }
 # here allow front-end ip range
 CORS_ORIGIN_WHITELIST = [
@@ -79,7 +84,7 @@ default_dburl = 'sqlite///' + os.path.join(BASE_DIR)
 DATABASES = {
     'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
 }
-#
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
@@ -89,6 +94,7 @@ DATABASES = {
 #         'HOST': 'localhost'
 #     }
 # }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -137,17 +143,17 @@ AWS_S3_OBJECT_PARAMETERS = {
 AWS_LOCATION = 'static'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'Books_Venv/static'),
+    os.path.join(BASE_DIR, '/static/'),
 ]
 
 STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 #---------------------------
-STATIC_URL = '/static/'
+STATIC_URL = '/staticfiles/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
+MEDIA_URL = '/mediafiles/'
 
 
 # Extra places for collectstatic to find static files.
