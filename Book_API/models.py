@@ -1,11 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-Language =(
-    ("Tamil", "Tamil"),
-    ("English", "English"),
-    ("Sinhala", "Sinhala"),
-)
+# Language =(
+#     ("Tamil", "Tamil"),
+#     ("English", "English"),
+#     ("Sinhala", "Sinhala"),
+# )
 
 
 class Category(models.Model):
