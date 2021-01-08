@@ -22,12 +22,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Book_API',
+    # 'Book_API',
     'corsheaders',
     'rest_framework',
     'storages',
-    'knox',
-
+    'Book_API.apps.BookApiConfig',
+# 'NewspaperAPI.apps.NewspaperapiConfig'
 ]
 
 MIDDLEWARE = [
@@ -62,7 +62,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'bookshop.wsgi.application'
-
+#
 # REST_FRAMEWORK = {
 #     'DEFAULT_PERMISSION_CLASS': {
 #         'rest_framework.permission.IsAuthenticated',
@@ -72,12 +72,23 @@ WSGI_APPLICATION = 'bookshop.wsgi.application'
 #
 # }
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
 }
 # here allow front-end ip range
 CORS_ORIGIN_WHITELIST = [
     "http://127.0.0.1:3000"
 ]
+
+JWT_AUTH = {
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'bookshop.utils.my_jwt_response_handler'
+}
 
 default_dburl = 'sqlite///' + os.path.join(BASE_DIR)
 

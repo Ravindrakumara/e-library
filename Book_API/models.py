@@ -9,7 +9,7 @@ Language =(
 
 
 class Category(models.Model):
-    title = models.CharField(max_length=65)
+    title = models.CharField(max_length=65,unique=True)
     create_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
