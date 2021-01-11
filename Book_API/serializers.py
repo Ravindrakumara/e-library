@@ -41,6 +41,7 @@ class UserSerializerWithToken(serializers.ModelSerializer):
 
 
 class BookSerializer(serializers.ModelSerializer):
+
     image = serializers.ImageField(max_length=None)
 
     class Meta:

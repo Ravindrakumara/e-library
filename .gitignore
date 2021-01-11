@@ -1,0 +1,6 @@
+# ignore to pycharm
+Pyvenv.cfg
+
+# ignore to env
+./Sceipts
+./Lib
